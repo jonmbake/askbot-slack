@@ -18,4 +18,4 @@ Add 'askbot_slack.SlackMiddleware' to MIDDLEWARE_CLASSES of settings.py in the A
 
 Add askbot_slack_config.py to the directory where Askbot is installed.  Fill in the configuration values for your instance.
 
-
+![Askbot Slack Hook](https://raw.githubusercontent.com/jonmbake/screenshots/master/askbot-slack/hook.png)
