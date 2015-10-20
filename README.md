@@ -22,8 +22,9 @@ Parameters are available in Askbot's settings -> external services -> Slack inte
 
 Alternatively, specify the following settings in the `settings.py`, with the corresponding values:
 
-   ASKBOT_SLACK_ENABLED = True
-   ASKBOT_SLACK_USERNAME = '...'
-   ASKBOT_SLACK_CHANNEL = '#...'
-   ASKBOT_SLACK_WEBHOOK_URL = '...'
-
+```
+ASKBOT_SLACK_ENABLED = True
+ASKBOT_SLACK_USERNAME = '...'
+ASKBOT_SLACK_CHANNEL = '#...'
+ASKBOT_SLACK_WEBHOOK_URL = '...'
+```
