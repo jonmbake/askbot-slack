@@ -1,9 +1,10 @@
 import json
 import requests
-from askbot_slack_config import config
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.sites.models import Site
+from askbot_slack import conf #register slack settings
+from askbot.conf import settings as askbot_settings
 from askbot.models import Post
 
 
@@ -18,8 +19,12 @@ def post_msg(msg):
     """
     Post message to specific slack channel defined in config.
     """
-    payload = {"text": msg, "username": config.get('SLACK_POST_USERNAME'), "channel": config.get('SLACK_POST_CHANNEL')}
-    requests.post(config.get('SLACK_WEBHOOK_URL'), data=json.dumps(payload))
+    payload = {
+        "text": msg,
+        "username": askbot_settings.SLACK_USERNAME,
+        "channel": askbot_settings.SLACK_CHANNEL
+    }
+    requests.post(askbot_settings.SLACK_WEBHOOK_URL, data=json.dumps(payload))
 
 
 @receiver(post_save, sender=Post)
