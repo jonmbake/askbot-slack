@@ -10,6 +10,15 @@ SLACK_SETTINGS = livesettings.ConfigurationGroup(
 )
 
 askbot_settings.register(
+    livesettings.BooleanValue(
+        SLACK_SETTINGS,
+        'SLACK_ENABLED',
+        default=False,
+        description=_('Enable posting to Slack')
+    )
+)
+
+askbot_settings.register(
     livesettings.StringValue(
         SLACK_SETTINGS,
         'SLACK_USERNAME',

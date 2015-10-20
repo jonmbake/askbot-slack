@@ -3,6 +3,7 @@ import requests
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.contrib.sites.models import Site
+from django.utils.translation import ugettext as _
 from askbot_slack import conf #register slack settings
 from askbot.conf import settings as askbot_settings
 from askbot.models import Post
@@ -32,15 +33,19 @@ def notify_post_created(sender, instance, created, raw, using, **kwargs):
     """
     Post message when Askbot Post is created.  A Post includes Questions, Comments and Answers.
     """
-    if created:
-        title = instance.thread.title
+    if created and askbot_settings.SLACK_ENABLED:
+        params = {
+            'user': instance.author,
+            'title': instance.thread.title,
+            'url': get_url(instance)
+        }
         if instance.is_question():
-            action = "asked"
+            msg = _('%(user)s asked "%(title)s": %(url)s') % params
         elif instance.is_answer():
-            action = "answered"
+            msg = _('%(user)s answered "%(title)s": %(url)s') % params
         elif instance.is_comment():
-            action = "commented on"
-        post_msg("%s  %s the question \"%s\": %s" % (instance.author,  action, title, get_url(instance)))
+            msg = _('%(user)s commented on "%(title)s": %(url)s') % params
+        post_msg(msg)
 
 
 class SlackMiddleware(object):
