@@ -41,7 +41,7 @@ def notify_post_created(sender, instance, created, raw, using, **kwargs):
 class SlackMiddleware(object):
     """
     A NO-OP middleware class to ensure our receiver gets registered early on.
-    From the django 1.5 docs on signals: 'make sure that the module it’s in gets imported early on so that the signal
+    From the django 1.5 docs on signals: 'make sure that the module it's in gets imported early on so that the signal
     handling gets registered before any signals need to be sent'.  Registering as a no-op middleware class ensures that
     this is 'imported early on'.  In later versions of django we can use the App#register method.
     """
