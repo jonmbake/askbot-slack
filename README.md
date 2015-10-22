@@ -16,7 +16,15 @@ pip install askbot_slack
 
 Add 'askbot_slack.SlackMiddleware' to MIDDLEWARE_CLASSES of settings.py in the Askbot install directory.
 
-### Step 3 - Add askbot_slack_config.py
+### Step 3 - Configure Slack integration parameters
 
-Add askbot_slack_config.py to the directory where Askbot is installed.  Fill in the configuration values for your instance.
+Parameters are available in Askbot's settings -> external services -> Slack integration
 
+Alternatively, specify the following settings in the `settings.py`, with the corresponding values:
+
+```
+ASKBOT_SLACK_ENABLED = True
+ASKBOT_SLACK_USERNAME = '...'
+ASKBOT_SLACK_CHANNEL = '#...'
+ASKBOT_SLACK_WEBHOOK_URL = '...'
+```
