@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="askbot-slack",
-    version="0.1.2",
+    version="0.1.4",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
