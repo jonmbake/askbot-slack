@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="askbot-slack",
-    version="0.1.4",
+    version="0.2.0",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
@@ -10,7 +10,7 @@ setup(
         "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
     ],
-    py_modules=['askbot_slack'],
+    packages=['askbot_slack'],
     install_requires=['askbot', 'requests'],
     author="Jon Bake",
     author_email="jonmbake@gmail.com",
@@ -19,6 +19,4 @@ setup(
     license="MIT",
     keywords="askbot slack integration",
     url="https://github.com/jonmbake/askbot-slack",
-    include_package_data=True,
-    zip_safe=False,
 )
